@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/all.css">
+      <!-- Normalize -->
+      <link rel="stylesheet" href="css/necolas.github.io_normalize.css_8.0.1_normalize.css">
+        <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+        <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap')
+    </style>
+    <title> بطاقة التهنئة</title>
+</head>
+<body>
+    <canvas id="greetingCanvas" style="display: none;"></canvas>
+    <div class="back">
+        <div class="container">
+            <div class="header">
+                <img src="images/logo3.jpg" class="logo"  alt="">
+                <h3 class="text">تم تصميم بطاقة التهنئة بنجاح </h3><br>
+            </div>
+            <div class="card">
+                <!-- Image element to display the selected card -->
+                <img id="selectedCardImage" alt="Selected card">
+            </div>
+            <!-- Button to download the generated image -->
+            <a id="downloadButton" class="button" href="#">
+                <span>حمل الصورة</span>
+                <i class="fa-solid fa-download icons"></i>
+            </a>
+            
+            <!-- Button to go back -->
+            <a href="index.html" class="button">
+                <span>العودة للرئيسية</span>
+                <i class="fa-solid fa-arrow-right-to-bracket icons"></i>
+            </a>
+            
+        </div>
+    </div>
+    <script>
+        // Function to extract parameter value from URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get the name and choice parameters from the URL
+        var userName = getParameterByName('name');
+        var selectedChoice = getParameterByName('choice');
+        var fontName = 'Tajawal' ;
+        var imageURL;
+        var fontSize;
+        var textXPercentage;
+        var textYPercentage;
+
+        var words = userName.split(' '); // Split the name into words
+        var numWords = words.length; // Count the number of words in the name
+
+        // Set size and position based on the number of words
+        switch (selectedChoice) {
+            case '1':
+                imageURL = 'images/card.jpeg';
+                if (numWords === 1) {
+                    fontSize = '300px';
+                    textXPercentage = 43;
+                    textYPercentage = 69;
+                } else if (numWords === 2) {
+                    fontSize = '300px';
+                    textXPercentage = 34;
+                    textYPercentage = 69;
+                } else if (numWords === 3) {
+                    fontSize = '300px';
+                    textXPercentage = 29;
+                    textYPercentage = 68;
+                } else if(numWords === 4) {
+                    fontSize = '270px';
+                    textXPercentage = 29;
+                    textYPercentage = 69.3;
+                }else{
+                    fontSize = '270px';
+                    textXPercentage = 26;
+                    textYPercentage = 68;
+                }
+                break;
+            case '2':
+                imageURL = 'images/card-2.jpg';
+                if (numWords === 1) {
+                    fontSize = '415px';
+                    textXPercentage = 45;
+                    textYPercentage = 67.5;
+                } else if (numWords === 2) {
+                    fontSize = '380px';
+                    textXPercentage = 34;
+                    textYPercentage = 68;
+                } else if (numWords === 3) {
+                    fontSize = '350px';
+                    textXPercentage = 36;
+                    textYPercentage = 68;
+                } else if(numWords === 4) {
+                    fontSize = '320px';
+                    textXPercentage = 28;
+                    textYPercentage = 68;
+                }else if(numWords === 5){
+                    fontSize = '300px';
+                    textXPercentage = 25;
+                    textYPercentage = 67.9;
+                }else{
+                    fontSize = '250px';
+                    textXPercentage = 22;
+                    textYPercentage = 67.9;
+                }
+                break;
+            case '3':
+                imageURL = 'images/6.png';
+                if (numWords === 1) {
+                    fontSize = '160px';
+                    textXPercentage = 45;
+                    textYPercentage = 75;
+                } else if (numWords === 2) {
+                    fontSize = '160px';
+                    textXPercentage = 34;
+                    textYPercentage = 75;
+                } else if (numWords === 3) {
+                    fontSize = '155px';
+                    textXPercentage = 25;
+                    textYPercentage =  75;
+                }else if (numWords === 4) {
+                    fontSize = '140px';
+                    textXPercentage = 30;
+                    textYPercentage = 75; 
+                }else {
+                    fontSize = '140px';
+                    textXPercentage = 25;
+                    textYPercentage = 75;
+                }
+                break;
+            default:
+                break;
+        }
+
+        // Create a new image element and draw text on it
+         var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            ctx.fillStyle = '#8068A5';
+            ctx.font = fontSize + ' ' + fontName;
+            ctx.fillText(userName, (textXPercentage / 100) * canvas.width, (textYPercentage / 100) * canvas.height);
+            var selectedCardImage = document.getElementById('selectedCardImage');
+            selectedCardImage.src = canvas.toDataURL('image/jpeg');
+
+            // Set the download button attributes to download the image
+            var downloadButton = document.getElementById('downloadButton');
+            downloadButton.href = canvas.toDataURL('image/jpeg');
+            downloadButton.download = 'selected_card.jpg';
+        };
+        img.src = imageURL;
+    </script>
+</body>
+</html>

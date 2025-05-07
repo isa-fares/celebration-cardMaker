@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اكتب اسمك وانشئ تصميمك بضغطة زر وخلال ثوان ">
+    <meta property="type" content="website">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="أنشئ شؤ بمناسبة حلول شهر رمضان المبارك">
+    <meta property="og:description" content="عزوة الحي وصوتهم، نساهم مع السكان في خلق مجتمع حيوي يطور ويشارك في الأعمال وصناعة القرار من خلال المشاركة المجتمعية في أمانة الرياض.">
+    <meta property="og:image" content="images/logo3.jpg">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap')
+</style>
+    <title>
+أنشئ تهنئتك بمناسبة حلول شهر رمضان المبارك</title>
+    <script>
+      let counter = 0; // قيمة العنصر
+  function incrementValue() {
+      counter++;
+      document.getElementById("counter").textContent = counter;
+  }
+</script>
+  </head>
+  </body>
+  </html>
+  
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/all.css">
+    <!-- Normalize -->
+    <link rel="stylesheet" href="css/necolas.github.io_normalize.css_8.0.1_normalize.css">
+      <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <title>طابع بطاقات التهنئة</title>
+
+  <!-- Include the JavaScript file -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="back">
+    <div class="container">
+      <div class="header">
+        <img src="images/logo3.jpg" class="logo"  alt="">
+        <h3 class="text">أنشئ تهنئتك بمناسبة حلول شهر رمضان المبارك</h3><br>
+      </div>
+      <div class="form">
+        <form action="">
+          <div class="form-group">
+            <label for="name"> اسمك الكريم 💜✨</label>
+            <input class="text-input" type="text"  name="name" id="name" placeholder=" أكتب اسمك..." required/>
+          </div>
+          <h4>أختر صورة</h4>
+          <div class="card">
+            <!--<div class="box">-->
+            <!--  <input type="radio" id="choice1" name="choice" value="1">-->
+            <!--  <label for="choice1"><img src="images/card.jpeg" alt=""></label>-->
+            <!--</div>-->
+            <!--<div class="box">-->
+            <!--  <input type="radio" id="choice2" name="choice" value="2" checked>-->
+            <!--  <label for="choice2"><img src="images/card-2.jpg" alt=""></label>-->
+            <!--</div>-->
+            <div class="box">
+              <input type="radio" id="choice3" name="choice" value="3">
+              <label for="choice3"><img src="images/6.png" alt=""></label>
+            </div>
+          </div>
+          <input type="button" value="عرض البطاقة" onclick="printUserName()" />
+          <p class="counter-element">
+            عدد كروت التهنئة المطبوعة:
+            <span class="counter" id="counter">0</span>
+          </p>
+          </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
